@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import LocationOnIcon from '@material-ui/icons/LocationOn';
 import pfp from '../../assets/logo.png'
+import Job from '../../components/Job'
 import {
     BrowserRouter as Router,
     Switch,
@@ -19,11 +20,24 @@ function Profile() {
 
     const history = useHistory();
 
+    const [user, setuser] = useState(null)
+
     const [name, setname] = useState("")
     const [website, setwebsite] = useState("")
     const [pfp, setpfp] = useState("")
     const [desc, setdesc] = useState("")
     const [loc, setloc] = useState("")
+
+    const [email, setemail] = useState("")
+
+    useEffect(() => {
+        auth.onAuthStateChanged((user) => {
+            if(!user) {history.push('/')}
+            else {
+                setuser(user)
+            }
+        })
+    })
 
     useEffect(() => {
         db.collection('org').doc(`${param}`).get().then((docs) => {
@@ -36,10 +50,42 @@ function Profile() {
                 setwebsite(docs.data().website)
                 setdesc(docs.data().desc)
                 setloc(docs.data().address)
+                setemail(docs.data().email)
+                
             }
         })
         
     }, [])
+
+    const [productList, setproductList] = useState([]);
+
+    useEffect(() => {
+       
+        
+       if(user){
+
+        db.collection('jobs')
+        .where("email" == email)
+        .onSnapshot(snap => {
+            let documents = [];
+
+            snap.forEach(doc => {
+                
+
+                documents.push({...doc.data(), id: doc.id})
+            })
+
+            setproductList(documents)
+            console.log(documents)
+        })
+
+    
+}}, [])
+    
+
+       
+
+        
 
     return (
         <div className="h-screen">
@@ -49,7 +95,7 @@ function Profile() {
                     <div className="flex pr-16 max-w-7xl mx-auto  justify-end">
                         <div className=" flex-col gap-4 flex justify-center">
                            
-                            <button className="border-white border-2 text-white px-8 py-3 rounded-3xl">Visit Website</button>
+                            <button className="border-white border-2 text-white px-8 py-3 rounded-3xl"> <a href={website}>Visit Website</a> </button>
                         </div>
                         
 
@@ -84,11 +130,21 @@ function Profile() {
                     <p>{desc}</p>
 
                 </div>
+
+                <div className="max-w-5xl mt-20  text-gray-700 sm:px-12 px-0 mx-auto">
+                    <h3 className="text-darkpurple font-bold" >Job Postings</h3>
+
+                    <Job/>
+
+
+                </div>
               
                        
 
                    
             </div>
+
+            
            
         </div>
     )
