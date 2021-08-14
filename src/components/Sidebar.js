@@ -3,8 +3,8 @@ import cover from '../assets/cover.png'
 function Sidebar() {
     return (
        
-            <div className="flex justify-end bg-red-800">
-                <div className="w-40 h-screen bg-darkpurple ">
+            <div className="flex justify-end ">
+                <div className="w-40 h-full bg-darkpurple ">
 
                 </div>
                 <div className="absolute top-0 right-0 h-screen w-1/5 flex mr-8">

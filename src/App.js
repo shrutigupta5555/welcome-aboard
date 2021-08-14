@@ -3,6 +3,8 @@ import {useState, useEffect} from 'react';
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import OrgSignUp from "./pages/OrgSignUp";
+import Setup from "./pages/org/Setup";
+import Profile from "./pages/org/Profile";
 
 function App() {
   return (
@@ -19,7 +21,11 @@ function App() {
             <OrgSignUp/>
           </Route>
           <Route exact path="/org/setup">
-            <OrgSignUp/>
+            <Setup  />
+          </Route>
+
+          <Route exact path="/profile/:username">
+            <Profile  />
           </Route>
           
         </Switch>

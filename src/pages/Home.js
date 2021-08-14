@@ -6,12 +6,12 @@ import {Link} from 'react-router-dom'
 function Home() {
     return (
         <div className="flex justify-between w-full">
-            <div className=" m-auto max-w-lg">
-                <div className="-mt-14">
+            <div className=" m-auto max-w-xl">
+                <div className="-mt-32">
                     <img src={logo} alt="" />
                 </div>
 
-                <div className="ml-16 w-3/4 md:w-1/2 mt-10">
+                <div className="ml-16  mt-10">
                    <p className=" font-poppins text-4xl font-medium">A community for Black queer and trans women, nonbinary people and allies interested in working remotely.</p> 
                 </div>
 
