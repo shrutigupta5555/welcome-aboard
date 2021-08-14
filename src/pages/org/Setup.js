@@ -9,6 +9,7 @@ function Setup() {
     //user
     const [user, setuser] = useState(null)
 
+    const [name, setname] = useState("")
     const [fname, setfname] = useState("");
     const [lname, setlname] = useState("");
     const [pos, setpos] = useState("")
@@ -115,6 +116,11 @@ function Setup() {
                                <br />
                                <br />
                             <h5 className="text-darkpurple font-bold">Company Specific Information</h5>
+                            <label htmlFor="" className="block mt-5 text-tbtext text-gray-700">
+                                Company Name
+                            </label>
+                            <input  className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full my-1 py-1 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purpleaccent"  type="text" name="" id="" value={name} onChange={(e) => setname(e.target.value)}/>
+                            
                             <label htmlFor="" className="block mt-5 text-tbtext text-gray-700">
                                 Company Website
                             </label>
