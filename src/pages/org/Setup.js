@@ -50,7 +50,8 @@ function Setup() {
             pos : pos,
             website : website,
             address : address,
-            desc : desc
+            desc : desc,
+            name: name
         }
 
         const username = user.email.split("@")[0]
