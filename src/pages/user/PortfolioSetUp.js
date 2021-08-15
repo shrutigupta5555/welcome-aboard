@@ -149,7 +149,7 @@ function PortfolioSetUp() {
                     .then((url => {
                         dbRef.update({url})
                     })).then(() => {
-                        history.replace(`/profile/${username}`);
+                        history.replace(`profile-user/${username}`);
                     })
             })
         }).catch(error => console.log(error))

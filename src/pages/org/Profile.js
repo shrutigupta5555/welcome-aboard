@@ -30,6 +30,7 @@ function Profile() {
     const [loc, setloc] = useState("")
 
     const [email, setemail] = useState("")
+    
 
     useEffect(() => {
         auth.onAuthStateChanged((user) => {
@@ -38,7 +39,7 @@ function Profile() {
                 setuser(user)
             }
         })
-    })
+    },[])
 
     useEffect(() => {
         db.collection('org').doc(`${param}`).get().then((docs) => {

@@ -12,6 +12,7 @@ import Portfolio from "./pages/user/Portfolio";
 import UserSignUp from "./pages/UserSignUp";
 import UserRegister from "./pages/UserRegister";
 import PortfolioSetUp from "./pages/user/PortfolioSetUp";
+import JobColl from "./pages/JobColl";
 
 function App() {
   return (
@@ -27,7 +28,7 @@ function App() {
           <Route exact path="/sign-up-org">
             <OrgSignUp/>
           </Route>
-          <Route exact path="/sign-up-user">
+          <Route exact path="/signup-user">
             <UserSignUp/>
           </Route>
           <Route exact path="/post-job">
@@ -56,7 +57,11 @@ function App() {
             <SingleJob  />
           </Route>
 
-          <Route exact path="/user/profile/:username">
+          <Route exact path="/browse-jobs">
+            <JobColl  />
+          </Route>
+
+          <Route exact path="/user/profile-user/:username">
             <Portfolio  />
           </Route>
           
