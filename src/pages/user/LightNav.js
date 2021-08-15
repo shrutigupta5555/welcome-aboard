@@ -40,7 +40,7 @@ function Nav() {
 
     return (
         <div className="flex justify-end align-middle gap-12">
-            <Link className="self-center" to={`user/profile/${username}`}    >Browse Jobs</Link>
+            <Link className="self-center" to={`user/profile-user/${username}`}    >My Portfolio</Link>
             <a className="self-center" href="/browse-jobs">Browse Jobs</a>
             <a className="self-center" target="_blank" href="https://www.overleaf.com/">Resume Templates</a>
             {user ?  
