@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react'
 import LocationOnIcon from '@material-ui/icons/LocationOn';
 import pfp from '../../assets/logo.png'
 import Job from '../../components/Job'
+import Nav from '../org/Nav'
 import {
     BrowserRouter as Router,
     Switch,
@@ -64,8 +65,9 @@ function Profile() {
         
        if(user){
 
+        console.log(user.email)
         db.collection('jobs')
-        .where("email" == email)
+        .where("email", "==" ,user.email)
         .onSnapshot(snap => {
             let documents = [];
 
@@ -80,19 +82,28 @@ function Profile() {
         })
 
     
-}}, [])
+}}, [user])
     
 
-       
+       const navigate = (item) => {
+           console.log(item)
+            history.push(`/job-details/${item}`)
+       }
 
         
 
     return (
         <div className="h-screen">
+
+            
         
             <div className="w-full relative">
-                <div className="py-12 bg-lightpurple w-full ">
-                    <div className="flex pr-16 max-w-7xl mx-auto  justify-end">
+                <div className="bg-lightpurple w-full ">
+                    <div className="pt-5">
+                    <Nav></Nav>
+                    </div>
+                    
+                    <div className="flex py-10  pr-16 max-w-7xl mx-auto  justify-end">
                         <div className=" flex-col gap-4 flex justify-center">
                            
                             <button className="border-white border-2 text-white px-8 py-3 rounded-3xl"> <a href={website}>Visit Website</a> </button>
@@ -134,7 +145,11 @@ function Profile() {
                 <div className="max-w-5xl mt-20  text-gray-700 sm:px-12 px-0 mx-auto">
                     <h3 className="text-darkpurple font-bold" >Job Postings</h3>
 
-                    <Job/>
+                    {productList.map(item => {
+                        console.log(item)
+                        return <Job key={item.id} navigate={navigate} {...item}/>
+                    })}
+                   
 
 
                 </div>

@@ -1,14 +1,16 @@
 import React from 'react'
 
-function Job() {
+function Job({title, salary, loc, id, navigate}) {
+    const k = id;
+
     return (
-        <div className="bg-gray-100 px-4 py-2 rounded-2xl md:w-1/2 w-full">
+        <div className="bg-gray-100 px-4 py-2 rounded-2xl md:w-1/2 w-full" onClick={() => navigate(k)}>
         <div className="flex justify-between">
-            <p className="text-lg font-medium">Associate Software Developer</p>
-            <p className="text-darkpurple">$70000</p>
+            <p className="text-lg font-medium">{title}</p>
+            <p className="text-darkpurple">${salary}</p>
 
         </div>
-        <p className="text-darkpurple font-semibold">Remote</p>
+        <p className="text-darkpurple font-semibold">{loc}</p>
     </div>
     )
 }

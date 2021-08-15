@@ -7,6 +7,7 @@ import Setup from "./pages/org/Setup";
 import Profile from "./pages/org/Profile";
 import OrgRegister from "./pages/OrgRegister";
 import PostJob from "./pages/org/PostJob";
+import SingleJob from "./pages/org/SingleJob";
 
 function App() {
   return (
@@ -35,6 +36,9 @@ function App() {
 
           <Route exact path="/profile/:username">
             <Profile  />
+          </Route>
+          <Route exact path="/job-details/:jobid">
+            <SingleJob  />
           </Route>
           
         </Switch>
