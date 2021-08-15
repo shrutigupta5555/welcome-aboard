@@ -41,7 +41,7 @@ function Nav() {
     return (
         <div className="flex justify-end align-middle gap-12">
             <Link className="self-center" to={`user/profile/${username}`}    >Browse Jobs</Link>
-            <Link className="self-center" to="/browse-jobs">Browse Jobs</Link>
+            <a className="self-center" href="/browse-jobs">Browse Jobs</a>
             <a className="self-center" target="_blank" href="https://www.overleaf.com/">Resume Templates</a>
             {user ?  
                 <button className="bg-darkpurple  text-white px-9 py-2 rounded-3xl self-center" onClick={handleLogOut}>Log Out</button> : ""
