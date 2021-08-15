@@ -58,7 +58,9 @@ function PostJob() {
             link: link,
             email : user.email
          }
-         db.collection('jobs').add(newItem).then((res) => console.log(res)).catch((err) => console.log(err))
+         db.collection('jobs').add(newItem).then((res) => {
+             console.log(res)
+            history.goBack()}).catch((err) => console.log(err))
      }
 
      const OPTIONS = [

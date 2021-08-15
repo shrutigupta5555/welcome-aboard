@@ -30,7 +30,7 @@ function Profile() {
     const [loc, setloc] = useState("")
 
     const [email, setemail] = useState("")
-    
+
 
     useEffect(() => {
         auth.onAuthStateChanged((user) => {
@@ -44,7 +44,7 @@ function Profile() {
     useEffect(() => {
         db.collection('org').doc(`${param}`).get().then((docs) => {
             console.log(docs.data())
-            if(!docs.exists) {history.push('/error')}
+            if(!docs.exists) {console.log('/error')}
             else {
                 // console.log(docs.data())
                 setpfp(docs.data().url)
@@ -107,7 +107,7 @@ function Profile() {
                     <div className="flex py-10  pr-16 max-w-7xl mx-auto  justify-end">
                         <div className=" flex-col gap-4 flex justify-center">
                            
-                            <button className="border-white border-2 text-white px-8 py-3 rounded-3xl"> <a href={website}>Visit Website</a> </button>
+                            <button className="border-white border-2 text-white px-8 py-3 rounded-3xl"> <a target="_blank" href={website}>Visit Website</a> </button>
                         </div>
                         
 
