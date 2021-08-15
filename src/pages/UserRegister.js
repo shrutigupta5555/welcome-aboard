@@ -23,7 +23,7 @@ function UserRegister() {
               console.log(user.user.email)
             const param = user.user.email.split("@")[0]
 
-            history.push(`/profile/${param}`);
+            history.push(`user/profile-user/${param}`);
           })
           .catch((err) => {
             console.log(err);

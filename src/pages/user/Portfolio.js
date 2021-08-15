@@ -56,7 +56,7 @@ function Portfolio() {
         return Math.floor(Math.random() * 4)
     }
     return (
-        <div className="bg-darkbg  h-screen relative">
+        <div className="bg-darkbg  min-h-screen relative">
 
             <Nav></Nav>
 
