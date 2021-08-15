@@ -64,7 +64,7 @@ function Portfolio() {
 
                 <div className="pt-10">
                     
-                    <img src={url} className="w-40 mx-auto   h-40  rounded-full"  alt="" />
+                    <img src={url} className="w-40 mx-auto object-cover  h-40  rounded-full"  alt="" />
                     
 
                 </div>
