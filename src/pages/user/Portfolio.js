@@ -1,9 +1,56 @@
-import React from 'react'
+import React,{useState, useEffect} from 'react'
 import Particles from 'react-particles-js'
 import logo from '../../assets/logo.png'
+import Nav from './Nav'
+import {
+    BrowserRouter as Router,
+    Switch,
+    Route,
+    useParams,
+    useHistory,
+    Redirect
+  } from "react-router-dom";
+
+  import {db,auth,storage} from '../../utils/firebase';
+
+
+
 function Portfolio() {
 
+    const u = useParams();
+    const param = u.username;
+
+    const history = useHistory();
+
+    const [fname, setfname] = useState("");
+    const [lname, setlname] = useState("");
+    const [bio, setbio] = useState("")
+    const [job, setjob] = useState("")
+    const [company, setcompany] = useState("")
+    
+    const [url, seturl] = useState('')
+    const [interests, setinterests] = useState([])
+
     const colors = ['#FFCCCC', '#CCFFE3', '#A4E3EC', '#A4E3EC', 'A4E3EC']
+
+
+    useEffect(() => {
+        db.collection('users').doc(`${param}`).get().then((docs) => {
+            console.log(docs.data())
+            if(!docs.exists) {console.log(param)}
+            else {
+                // console.log(docs.data())
+                setfname(docs.data().fname)
+                setlname(docs.data().lname)
+                setbio(docs.data().bio)
+                setjob(docs.data().job)
+                setcompany(docs.data().company)
+                setinterests(docs.data().interest)
+                seturl(docs.data().url)
+            }
+        })
+        
+    }, [])
 
     const random = () => {
         return Math.floor(Math.random() * 4)
@@ -11,33 +58,40 @@ function Portfolio() {
     return (
         <div className="bg-darkbg  h-screen relative">
 
+            <Nav></Nav>
+
             <div className="absolute  mx-auto max-w-5xl left-1/2 transform -translate-x-1/2 top-0">
 
                 <div className="pt-10">
                     
-                    <img src={logo} className="w-40 mx-auto   h-40  rounded-full"  alt="" />
+                    <img src={url} className="w-40 mx-auto   h-40  rounded-full"  alt="" />
                     
 
                 </div>
 
-                <h2 className="font-semibold text-3xl mt-8 text-white text-center">Hi, I'm Sara James.</h2>
+                <h2 className="font-semibold text-3xl mt-8 text-white text-center">Hi, I'm {fname} {lname}.</h2>
 
-                <p className="text-gray-100 opacity-75 my-3.5 text-center">Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis sit assumenda doloremque repellat deleniti dolorem, quae vitae accusantium iure perspiciatis dignissimos nobis. Rerum, illo placeat. Ratione deserunt pariatur rem iure.</p>
+                <p className="text-gray-100 opacity-75 my-3.5 text-center">{bio}</p>
 
 
-                <div className="flex mt-8 gap-5">
-                    <span className="px-4 py-1 rounded-3xl"  style={{backgroundColor: colors[random()]}}>Python</span>
+                <div className="flex flex-wrap mt-8 gap-5">
+                    {
+                        interests.map(item => {
+                            return <span className="px-4 py-1 rounded-3xl"  style={{backgroundColor: colors[random()]}}>{item.name}</span>
+                        })
+                    }
+                    
                 </div>
 
 
-                <h3 className="font-medium text-xl mt-8 text-white text-center">Cool Things I've Done.</h3>
+                <h3 className="font-medium text-xl mt-24 text-white text-center">Cool Things I've Done.</h3>
                 <div className="bg-gray-100 px-4 py-1 rounded-2xl md:w-1/2 w-full">
                     <div className="flex justify-between">
-                        <p className="text-lg font-medium">Developer Relations</p>
+                        <p className="text-lg font-medium">{job}</p>
                       
 
                     </div>
-                    <p className="text-darkpurple font-semibold">Zanie Co</p>
+                    <p className="text-darkpurple font-semibold">{company}</p>
                 </div>                
                 
 

@@ -9,6 +9,9 @@ import OrgRegister from "./pages/OrgRegister";
 import PostJob from "./pages/org/PostJob";
 import SingleJob from "./pages/org/SingleJob";
 import Portfolio from "./pages/user/Portfolio";
+import UserSignUp from "./pages/UserSignUp";
+import UserRegister from "./pages/UserRegister";
+import PortfolioSetUp from "./pages/user/PortfolioSetUp";
 
 function App() {
   return (
@@ -24,6 +27,9 @@ function App() {
           <Route exact path="/sign-up-org">
             <OrgSignUp/>
           </Route>
+          <Route exact path="/sign-up-user">
+            <UserSignUp/>
+          </Route>
           <Route exact path="/post-job">
             <PostJob/>
           </Route>
@@ -31,9 +37,17 @@ function App() {
           <Route exact path="/org-login">
             <OrgRegister/>
           </Route>
+          <Route exact path="/user-login">
+            <UserRegister/>
+          </Route>
           <Route exact path="/org/setup">
             <Setup  />
           </Route>
+
+          <Route exact path="/user/setup">
+            <PortfolioSetUp  />
+          </Route>
+          
 
           <Route exact path="/profile/:username">
             <Profile  />
